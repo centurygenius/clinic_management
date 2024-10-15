@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #content {
+            width: 95%;
+            height: 65%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #heading {
+            text-align: center;   
+            margin-top: 20px;
+        }
+
+        #error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-div {
+            margin-top: 10px;
+        }
+
+        #button {
+            margin-top: 10px;
+            background-color: crimson;
+            width: 88px;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            margin-left: 37%;  
+            font-size: 18px;
+        }
+
+        #button:hover {
+            background-color: darkred;
+        }
+
+        #go-back-home {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #go-back-home a em {
+            color: darkred;
+        }
+
+        #go-back-home a em:hover {
+            color: crimson;
+        }
+
+        @media (min-width: 768px) {
+            #content {
+                height: 83%;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 15px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            #button {
+                margin-left: 43%;
+            }
+
+            .icon-image img {
+                height: 25px;
+            }
+            
+        }
+    </style>
+    <title>Register Staff</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="">
+    <div class="container bg-red-500 h-screen flex items-center ">
+        
+        <div id="content" class="bg-blue-500">
+            <h2 id="heading" class="text-white font-bold text-3xl">Register Staff</h2>
+            <h5 id="error" class="text-xl">Placeholder for error messages</h5>
+            <br/>
+            <form action="" method="post" class="lg:container lg:mx-auto">
+               
+                <select name="nurse" id="staff_category" class="mb-2" required>
+                    <option value="">Select staff category</option>
+                    <option value="nurse">Nurse</option>
+                    <option value="doctor">Doctor</option>
+                </select>
+                <div class="flex ">
+                    <div class="icon-image">
+                        <img src="images/name_icon2.png" width="30" height="30" alt="logo-img" />                        
+                    </div>
+                    <input class="w-screen" type="text" name="firstname" placeholder="Enter first name..." />
+                </div>
+                <div class="flex form-div icon-image">
+                    <div>
+                        <img src="images/name_icon2.png" width="30" height="30" alt="logo-img" />                        
+                    </div>
+                    <input class="w-screen" type="text" name="lasttname" placeholder="Enter last name..." />
+                </div>
+                <div class="flex form-div icon-image">
+                    <div>
+                        <img src="images/phone_number_icon1.png" width="30" height="30" alt="logo-img" />                        
+                    </div>
+                    <input class="w-screen" type="text" name="username" placeholder="Enter username" />
+                </div>
+                <div class="flex form-div icon-image">
+                    <div>
+                        <img src="images/email_icon3.png" width="30" height="30" alt="logo-img" />                        
+                    </div>
+                    <input class="w-screen" type="text" name="email" placeholder="Enter email address..." />
+                </div>
+                <div class="flex form-div icon-image">
+                    <div>
+                        <img src="images/password_icon1.jpg" width="30" height="30" alt="logo-img" />                        
+                    </div>
+                    <input class="w-screen" type="text" name="password" placeholder="Enter password..." />
+                </div>
+                <div class="flex form-div icon-image">
+                    <div>
+                        <img src="images/password_icon1.jpg" width="30" height="30" alt="logo-img" />                        
+                    </div>
+                    <input class="w-screen" type="text" name="confirm_password" placeholder="Confirm password..." />
+                </div>
+                <button type="submit"  id="button" class=" font-bold text-white">Register</button>                
+                
+            </form>
+            <p id="go-back-home">Go back to <a href="home.html"><em>Home</em></a></p>
+
+        </div>
+    </div>
+</body>
+</html>

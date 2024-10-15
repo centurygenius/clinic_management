@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Management App</title>
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <style>
+        /***** Custom CSSstyles *****/
+        #logo {
+            margin-left: 342px;
+            margin-top: 5px;
+        }
+
+        #heading{
+            margin-top: 0px;
+            font-size: x-large;
+            text-align: center;
+        }
+
+        #motto {
+            margin-left: 385px;
+        }
+
+        .about, .gynaecology,
+        .obstetrics, .maternity,
+        .emergency, .dentistry,
+        .more {
+            text-align: center;
+        }
+
+        .about p, 
+        .gynaecology p,
+        .obstetrics p,
+        .maternity p,
+        .emergency p,
+        .dentistry p,
+        .more p {
+            padding: 2px;
+            margin-bottom: 10px;
+        }
+
+        .about h3 {
+            margin-bottom: 10px;
+            font-size: 25px;
+            letter-spacing: 4px;
+            color: gold;
+            
+        }
+
+        h3::after {
+            content: "";
+            animation: carousel 10.00s linear infinite;
+        }
+
+        @keyframes carousel {
+            0% {
+                content: "Surgery";
+            }
+            20% {
+                content: "Gynaecology";
+            }
+            40% {
+                content: "Obstetrics";
+            }
+            60% {
+                content: "Maternity";
+            }
+            80% {
+                content: "Emergency";
+            }
+            100% {
+                content: "Dentistry";
+            }
+        }
+
+        #linkedln,
+        #twitter,
+        #instagram {
+            width: 20px;
+            margin-bottom: 2px;
+            margin-top: 5px;
+            margin-right: 3px;
+            border-radius: 50%;
+        }
+
+        #linkedln:hover,
+        #twitter:hover,
+        #instagram:hover {
+            width: 22px;
+        }
+
+        #footer {
+            height: 100px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-bottom: 10px;
+            margin-top: -20px;
+        }
+
+        @media (max-width: 640px) {
+            #heading{
+            margin-top: 0px;
+            font-size: x-large;
+            text-align: center;
+            }
+
+            #motto {
+            margin-left: 75px;
+            font-size: small;
+            }
+
+            #logo {
+            margin-left: 0px;
+            margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="flex bg-cyan-600  ">
+        <!-- ==============================  Sidebar section  ======================== -->
+        <div class="bg-blue-700  text-white sm:max-w-2/6 md:max-w-2/6 w-2/6 ">
+            <nav class="text-left text-xs mt-20">
+                <ul>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="#gynaecology">Gynaecology</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="#obstetrics">Obstetrics</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="#maternity">Maternity</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="#emergency">Emergency</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="#dentistry">Dentistry</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="#more">Lots More...</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'login_staff' %}">Staff Login</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- ==============================  Main section  ======================== -->
+        <div class="w-screen flex flex-col justify-between">
+            <div class="bg-red-500 text-white ">
+                <br/>
+                <div class="flex">
+                    <img id="logo" src="{% static 'assets/images/hospital_icon.png' %}" 
+                                width="30"
+                                height="30" 
+                                alt="logo-img" />
+                    <h1 id="heading" class=" font-bold font-serif">Century Hospitals</h1>
+                </div>
+                <p><em id="motto">......your health, our concern</em></p>
+                <hr/>
+                <br/>
+                <div class="about">
+                    <h3>Services: </h3>
+                    <h2 id="about" class="font-bold text-xl">About</h2>
+                    <br/>
+                    <p>
+                        The Century Hospitals Limited is a leading healthcare provider in the country. 
+                        We are one of the largest private hospitals in Nigeria. It was incorporated in 2012.
+                        We are committed to providing the best healthcare service to our patients. Our services
+                        range from routine check-ups, emergency care, gynaecoly, maternity, denstistry, 
+                        obstetrics, advanced surgery, cardiology and many more.
+                    </p>
+                </div>
+                <hr/>
+                <br/>
+                <div class="gynaecology">
+                    <h2 id="gynaecology" class="font-bold text-xl">Gynaecology</h2>
+                    <br/>
+                    <p>
+                        The hospital offers gynaecology services. With 
+                        our team of highly skilled gynaecologists, 
+                        we can provide the best care for your child. 
+                    </p>
+                </div>
+                <hr/>
+                <br/>
+                <div class="obstetrics">
+                    <h2 id="obstetrics" class="font-bold text-xl">Obstetrics</h2>
+                    <br/>
+                    <p>
+                        The hospital offers obstetrics services. 
+                        With our team of highly skilled obstetricians, 
+                        we can provide the best care for your child.
+                    </p>
+                </div>
+                <hr/>
+                <br/>
+                <div class="maternity">
+                    <h2 id="maternity" class="font-bold text-xl">Maternity</h2>
+                    <br/>
+                    <p>
+                        The hospital offers Maternity services. The best 
+                        care for any pregnant woman.
+                    </p>
+                </div>
+                <hr/>
+                <br/>
+                <div class="emergency">
+                    <h2 id="emergency" class="font-bold text-xl">Emergency</h2>
+                    <br/>
+                    <p>
+                        The hospital offers Emergency services. Our team of
+                        highly skilled nurses will be on duty 24/7.
+                    </p>
+                </div>
+                <hr/>
+                <br/>
+                <div class="dentistry">
+                    <h2 id="dentistry" class="font-bold text-xl">Dentistry</h2>
+                    <br/>
+                    <p>
+                        The hospital offers Dentistry services. Our team of
+                        highly skilled nurses will be on duty 24/7.
+                    </p>
+                </div>
+                <hr/>
+                <br/>
+                <div class="more">
+                    <h2 id="more" class="font-bold text-xl">Lots More...</h2>
+                    <br/>
+                    <p>
+                        The hospital offers various other medical services as well. Our team of
+                        highly skilled nurses will be on duty 24/7.
+                    </p>
+                </div>
+                <br/>
+            </div>
+            <!-- ==============================  Footer section  ======================== -->
+            <div id="footer" class="bg-yellow-500 text-white flex flex-row justify-between gap-3">
+                <div>
+                    <ul>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#gynaecology">Gynaecology</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#obstetrics">Obstetrics</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#maternity">Maternity</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#emergency">Emergencyy</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#dentistry">Dentistry</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#more">Lots more...</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="#"><img id="linkedln" src="{% static 'assets/images/linkedln_icon2.png' %}" alt="facebook" /></a>
+                    <a href="#"><img id="twitter" src="{% static 'assets/images/twitter.png' %}" alt="x" /></a>
+                    <a href="#"><img id="instagram" src="{% static 'assets/images/instagram.png' %}" alt="instagram" /></a>
+                </div>
+            </div>
+            <p class="text-white  bg-yellow-500 copyright"> <em>Copyright &copy; <span id="copyright"></span> - Century Hospitals. All Rights Reserved</em></p>
+        </div>
+    </div>
+    <!-- ============================== Script for dynamic footer copyright year ======================== -->
+    <script>
+        const copyright = document.querySelector('#copyright');
+        copyright.innerHTML = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Patient</title>
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <style>
+        /***** Custom CSSstyles *****/
+        #staff-name{
+            font-style: italic;
+            color: gold;
+            margin-top: 7px;
+        }
+
+        #logo {
+            margin-left: 342px;
+            margin-top: 5px;
+        }
+
+        #heading{
+            margin-top: 0px;
+            font-size: x-large;
+            text-align: center;
+        }
+
+        #motto {
+            margin-left: 385px;
+        }
+
+        .about, .gynaecology,
+        .obstetrics, .maternity,
+        .emergency, .dentistry,
+        .more {
+            text-align: center;
+        }
+
+        .about p, 
+        .gynaecology p,
+        .obstetrics p,
+        .maternity p,
+        .emergency p,
+        .dentistry p,
+        .more p {
+            padding: 2px;
+            margin-bottom: 10px;
+        }
+
+        .about h3 {
+            margin-bottom: 10px;
+            font-size: 25px;
+            letter-spacing: 4px;
+            color: gold;
+            
+        }
+
+        h3::after {
+            content: "";
+            animation: carousel 10.00s linear infinite;
+        }
+
+        @keyframes carousel {
+            0% {
+                content: "Surgery";
+            }
+            20% {
+                content: "Gynaecology";
+            }
+            40% {
+                content: "Obstetrics";
+            }
+            60% {
+                content: "Maternity";
+            }
+            80% {
+                content: "Emergency";
+            }
+            100% {
+                content: "Dentistry";
+            }
+        }
+
+        #error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        input {
+            color: black;
+            width: 150px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: green;
+            border-radius: 5px;
+            width: 140px;
+        }
+
+        button:hover {
+            background-color: limegreen;
+            border-radius: 5px;
+        }
+
+        #linkedln,
+        #twitter,
+        #instagram {
+            width: 20px;
+            margin-bottom: 2px;
+            margin-top: 5px;
+            margin-right: 3px;
+            border-radius: 50%;
+        }
+
+        #linkedln:hover,
+        #twitter:hover,
+        #instagram:hover {
+            width: 22px;
+        }
+
+        #footer {
+            height: 100px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-bottom: 10px;
+            margin-top: -20px;
+        }
+
+        table, th, td {
+            margin: auto;
+            border: solid 1px black;
+            background-color: gray;
+        }
+
+        #table-head {
+            color: black;
+        }
+
+        @media (max-width: 640px) {
+            #heading{
+            margin-top: 0px;
+            font-size: x-large;
+            text-align: center;
+            }
+
+            #motto {
+            margin-left: 75px;
+            font-size: small;
+            }
+
+            #logo {
+            margin-left: 0px;
+            margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="flex bg-cyan-600  ">
+        <!-- ==============================  Sidebar section  ======================== -->
+        <div class="bg-blue-700  text-white sm:max-w-2/6 md:max-w-2/6 w-2/6 ">
+            <br/>
+            
+            <br/>
+            <nav class="text-left text-xs mt-20">
+                <ul>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'index' %}" target="_blank">Home</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'nurse_view' %}" target="_blank" >My Nurse Station</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'search_patient' %}" target="_blank" >Manage Patient</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'register_patients' %}" target="_blank" >Register Patient</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'reset_password' %}">Reset Password</a></li>
+                    <li class="pl-1 font-bold mb-3 hover:underline hover:text-cyan-300 hover:text-sm"><a href="{% url 'user_logout' %}">Log Out</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- ==============================  Main section  ======================== -->
+        <div class="w-screen flex flex-col justify-between">
+            <div class="bg-red-500 text-white ">
+                <br/>
+                <div class="flex">
+                    <img id="logo" src="{% static 'assets/images/hospital_icon.png' %}" 
+                                width="30"
+                                height="30" 
+                                alt="logo-img" />
+                    <h1 id="heading" class=" font-bold font-serif">Century Hospitals</h1>
+                </div>
+                <p><em id="motto">......your health, our concern</em></p>
+                <hr/>
+                <br/>
+                <div class="about">
+                    <h3>Services: </h3>
+                    <h2 id="about" class="font-bold text-xl">Search Patient</h2>
+                    
+                    <p>
+                        Input patient <strong><em>Hospital ID</em></strong> or 
+                        <strong><em>First Name</em></strong> or 
+                        <br/><strong><em>Last Name</em></strong> to search for a patient.
+                    </p>
+                    <form action="" method="GET">
+                        
+                        {% csrf_token %}
+                         
+                        <br/>
+                        
+                        <br/>  
+                          
+                        <div>
+                            {{ form }}
+                            <br/>
+                            <button type="submit" id="search" class="font-bold">Search</button>
+                        </div>
+                        
+                    </form>
+                    
+                    <br/>
+                    <hr/>
+                    <br/>
+                {%for message in messages%}
+                    <h5 id="error" class="text-xl">{{ message }}</h5>
+                {%endfor%}
+                    <div class="mx-auto">
+                {% if results %}
+                         <!-- ===  Template section to populate patient's details === -->
+                        <h2 class="font-bold text-xl">Patient Details</h2>
+                        <br/>
+                        
+                        <table>
+                            <tr id="table-head">
+                                <th>Hospital ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Action</th>
+                            </tr>
+                        {% for patient in results %}
+                            <tr>
+                                <td>{{ patient.hospital_id }}</td>
+                                <td>{{ patient.first_name }}</td>
+                                <td>{{ patient.last_name }}</td>
+                                <td><a href="{% url 'nurse_update_patient' patient.id %}"><button class="font-bold" onclick="return confirm('Are you sure you want to manage this patient?')" >Manage</button></td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                        
+                        
+                        <br/>
+                        
+                {% elif results == None %}
+                        <h5>No results found</h5>
+                {% endif %}
+                        <h5>{{error}}</h5>
+                        <br/><br/><br/>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <!-- ==============================  Footer section  ======================== -->
+            <div id="footer" class="bg-yellow-500 text-white flex flex-row justify-between gap-3">
+                <div>
+                    <ul>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#gynaecology">Gynaecology</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#obstetrics">Obstetrics</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#maternity">Maternity</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#emergency">Emergencyy</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#dentistry">Dentistry</a></li>
+                        <li class="pl-1 font-bold hover:underline hover:text-cyan-300"><a href="#more">Lots more...</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="#"><img id="linkedln" src="{% static 'assets/images/linkedln_icon2.png' %}" alt="facebook" /></a>
+                    <a href="#"><img id="twitter" src="{% static 'assets/images/twitter.png' %}" alt="x" /></a>
+                    <a href="#"><img id="instagram" src="{% static 'assets/images/instagram.png' %}" alt="instagram" /></a>
+                </div>
+            </div>
+            <p class="text-white  bg-yellow-500 copyright"> <em>Copyright &copy; <span id="copyright"></span> - Century Hospitals. All Rights Reserved</em></p>
+        </div>
+    </div>
+    <!-- ============================== Script for dynamic footer copyright year ======================== -->
+    <script>
+        const copyright = document.querySelector('#copyright');
+        copyright.innerHTML = new Date().getFullYear();
+    </script>
+</body>
+</html>
