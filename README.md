@@ -62,8 +62,5 @@ To run the application locally on your computer, install Python globally by visi
 
     ```http://127.0.0.1:8000/```
 
-## Screenshot
-
-![](./assets/images/century_hospital_screenshot.png)
 
 
