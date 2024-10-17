@@ -7,6 +7,7 @@ from .forms import PatientForm, SearchForm, NurseManagePatientForm, DoctorManage
 from .models import Patient
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .decorators import allowed_users
 
 
 
@@ -69,6 +70,7 @@ def reset_password(request):
     else:
         return render(request, 'reset_password.html')
 @login_required(login_url='login_staff')
+@allowed_users(allowed_roles=['nurse'])
 def nurse_view(request):
     #Displays the nurse station page and ensures only authenticated users can
     #access the page for health care service delivery
@@ -78,11 +80,13 @@ def nurse_view(request):
     return render(request, 'nurse_view.html')
 
 @login_required(login_url='login_staff')
+@allowed_users(allowed_roles=['doctor'])
 def doctor_view(request):
     #Displays doctor's page and ensures only authenticated users can
     #access the page for health care service delivery   
     return render(request, 'doctor_view.html')
 @login_required(login_url='login_staff')
+@allowed_users(allowed_roles=['nurse'])
 def register_patients(request):
     #Displays the register patients page and ensures only authenticated users can
     #register patients
@@ -103,7 +107,8 @@ def register_patients(request):
     else:
         form = PatientForm()
         return render(request, 'register_patients.html', {'form': form})
-@login_required(login_url='login_staff')    
+@login_required(login_url='login_staff')  
+@allowed_users(allowed_roles=['nurse'])  
 def nurse_update_patient(request, pk):
     #Displays the update patient page and ensures only authenticated users can
     #update patient's information
@@ -125,6 +130,7 @@ def nurse_update_patient(request, pk):
     }
     return render(request, 'nurse_update_patient.html', context)
 @login_required(login_url='login_staff')
+@allowed_users(allowed_roles=['nurse'])
 def search_patient(request):
     #Displays the search patient page for a nurse
 
@@ -143,6 +149,7 @@ def search_patient(request):
         
     return render(request, 'search_patient.html', {'form': form, 'results': results})
 @login_required(login_url='login_staff')
+@allowed_users(allowed_roles=['doctor'])
 def doctor_search_patient(request):
     #Displays the search patient page for a doctor
 
@@ -161,6 +168,7 @@ def doctor_search_patient(request):
         
     return render(request, 'doctor_search_patient.html', {'form': form, 'results': results})
 @login_required(login_url='login_staff')
+@allowed_users(allowed_roles=['doctor'])
 def doctor_update_patient(request, pk):
     #Displays the update patient page and ensures only authenticated users can
     #update patient's information
@@ -182,6 +190,7 @@ def doctor_update_patient(request, pk):
     }
     return render(request, 'doctor_update_patient.html', context)
 @login_required(login_url='login_staff')
+@allowed_users(allowed_roles=['doctor'])
 def doctor_register_patients(request):
     #Displays the register patients page and ensures only authenticated users can
     #register patients
