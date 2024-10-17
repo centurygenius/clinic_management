@@ -211,3 +211,6 @@ def doctor_register_patients(request):
     else:
         form = PatientForm()
         return render(request, 'register_patients.html', {'form': form})
+    
+def error(request):
+    return render(request, 'error.html')

@@ -14,4 +14,5 @@ urlpatterns = [
     path('doctor_view/doctor_search_patient/', views.doctor_search_patient, name='doctor_search_patient'),
     path('doctor_view/doctor_search_patient/doctor_update_patient/<int:pk>/', views.doctor_update_patient, name='doctor_update_patient'),
     path('doctor_view/doctor_register_patients/', views.doctor_register_patients, name='doctor_register_patients'),
+    path('login_staff/error/', views.error, name='error'),
 ]
