@@ -14,7 +14,7 @@ The application is extremely relevant in this dispensation as it improves timely
 
 ## **Author**
 
-Abiona Samuel Olawuyi
+Abiona Samuel Olawuyi(samuelo.abiona@gmail.com)
 
 ## **Usage**
 
