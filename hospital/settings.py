@@ -30,15 +30,19 @@ load_dotenv(env_path)
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-4rx-op%^0+4qvawuf(umnkf*l2(1nsh*+=w+g24xm!+q1p*nca'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-1z3hm_7ssh5nzz0%1^d(%0td0olo#sz-f#q@i1_duo&dxx!bcn')
-
+#SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-1z3hm_7ssh5nzz0%1^d(%0td0olo#sz-f#q@i1_duo&dxx!bcn')
+SECRET_KEY = 'django-insecure-4rx-op%^0+4qvawuf(umnkf*l2(1nsh*+=w+g24xm!+q1p*nca'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
